@@ -1,3 +1,6 @@
+mod errors;
+mod models;
+mod validation;
 fn main() {
-    println!("Hello, world!");
+    println!("Traceguard is starting!");
 }
