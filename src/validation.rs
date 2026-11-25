@@ -1,4 +1,5 @@
 use crate::errors::TraceGuardError;
+use crate::models::SwapEvent;
 use crate::models::{EventType, ProtocolEvent};
 
 pub fn validate_event(event: &ProtocolEvent) -> Result<(), TraceGuardError> {
@@ -38,6 +39,29 @@ pub fn validate_event(event: &ProtocolEvent) -> Result<(), TraceGuardError> {
             ));
         }
         _ => {}
+    }
+
+    Ok(())
+}
+
+// Add this function below validate_event()
+pub fn validate_swap(swap: &SwapEvent) -> Result<(), TraceGuardError> {
+    if swap.transaction_hash.trim().is_empty() {
+        return Err(TraceGuardError::InvalidEvent(
+            "transaction hash cannot be empty".to_string(),
+        ));
+    }
+
+    if swap.pool_address.trim().is_empty() {
+        return Err(TraceGuardError::InvalidEvent(
+            "pool address cannot be empty".to_string(),
+        ));
+    }
+
+    if !swap.amount_usd.is_finite() || swap.amount_usd < 0.0 {
+        return Err(TraceGuardError::InvalidEvent(
+            "swap amount must be finite and non-negative".to_string(),
+        ));
     }
 
     Ok(())
