@@ -1,0 +1,58 @@
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;dyld3::MachOFile::forEachInitializerPointerSection(Diagnostics&, void (unsigned int, unsigned int, bool&) block_pointer) const;traceguard::detector::detect_activity_bursts_rolling 25
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x4ae4;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;dyld4::JustInTimeLoader::runInitializers(dyld4::RuntimeState&) const;0x6acf3;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x34b8c;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x75bb4;traceguard::detector::detect_activity_bursts_rolling 11
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x1f35b;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x29c17;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x11f81f;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x3ff7;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x1b4af;traceguard::detector::detect_activity_bursts_rolling 63
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0xfc7;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;mach_msg2_trap;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x32e8f;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x344eb;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x83cb;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<std::sync::once::Once>::call_once::<curl::init::{closure#0}>::{closure#0};traceguard::detector::detect_activity_bursts_rolling 168
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;dyld4::Loader::hasExportedSymbol(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::ExportedSymbolMode, dyld4::Loader::ResolverMode, dyld4::Loader::ResolvedSymbol*, dyld3::Array<dyld4::Loader const*>*) const;traceguard::detector::detect_activity_bursts_rolling 97
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;__pthread_once_handler;traceguard::detector::detect_activity_bursts_rolling 45
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x6acdf;traceguard::detector::detect_activity_bursts_rolling 13
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;pthread_once;traceguard::detector::detect_activity_bursts_rolling 17
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x4ba6f;traceguard::detector::detect_activity_bursts_rolling 32
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x301cb;traceguard::detector::detect_activity_bursts_rolling 6
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x462f;traceguard::detector::detect_activity_bursts_rolling 13
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x9cd7;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*> >&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*> >&) const;traceguard::detector::detect_activity_bursts_rolling 7
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;lsl::Allocator::aligned_alloc(unsigned long long, unsigned long long);traceguard::detector::detect_activity_bursts_rolling 4
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<rustup::dist::ParsedToolchainDesc as core::str::traits::FromStr>::from_str;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;alloc::str::join_generic_copy::<str, u8, &str>;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;__execve;traceguard::detector::detect_activity_bursts_rolling 10
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;__workq_kernreturn;traceguard::detector::detect_activity_bursts_rolling 4
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<std::thread::lifecycle::spawn_unchecked<<tokio::runtime::blocking::pool::Spawner>::spawn_thread::{closure#0}, ()>::{closure#1} as core::ops::function::FnOnce<()>>::call_once::{shim:vtable#0};traceguard::detector::detect_activity_bursts_rolling 3
+start;_pthread_start;traceguard::detector::detect_activity_bursts_rolling 6
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;std::sys::backtrace::__rust_begin_short_backtrace::<<tokio::runtime::blocking::pool::Spawner>::spawn_thread::{closure#0}, ()>;traceguard::detector::detect_activity_bursts_rolling 3
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<std::sys::thread::unix::Thread>::new::thread_start;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<tokio::runtime::scheduler::multi_thread::worker::Context>::park_internal;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;__psynch_cvwait;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x1ee7b3;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x1fa8cb;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x518c7;traceguard::detector::detect_activity_bursts_rolling 3
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const;0x108c2f;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x17189b;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x30e7f;traceguard::detector::detect_activity_bursts_rolling 3
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;0x3164b;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;mach_msg_overwrite;traceguard::detector::detect_activity_bursts_rolling 2
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<cargo::util::context::GlobalContext>::default;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<alloc::sync::Arc<dyn clap_complete::engine::custom::ValueCompleter>>::drop_slow;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;_os_once;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;CRYPTO_THREAD_run_once;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;ossl_init_config_ossl_;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;ERR_set_mark;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;ossl_err_load_BUF_strings;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<cargo::cli::Exec>::exec;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<cargo::core::workspace::Workspace>::find_root;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*);<cargo::core::workspace::Packages>::load;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<cargo::core::source_id::SourceId>::new;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const;<cargo::core::workspace::Packages>::load;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;cargo::util::toml::read_manifest;traceguard::detector::detect_activity_bursts_rolling 1
+dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const;<serde_ignored::TrackedSeed<core::marker::PhantomData<core::option::Option<alloc::collections::btree::map::BTreeMap<cargo_util_schemas::manifest::PackageName, cargo_util_schemas::manifest::InheritableDependency>>>, cargo::util::toml::deserialize_toml::{closure#0}> as serde_core::de::DeserializeSeed>::deserialize::<toml::de::deserializer::value::ValueDeserializer>;traceguard::detector::detect_activity_bursts_rolling 1

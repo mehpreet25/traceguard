@@ -204,3 +204,13 @@ cargo bench
 TraceGuard demonstrates how Rust can be used to build a blockchain monitoring prototype combining real historical Uniswap data, statistical anomaly detection, automated testing, HTTP APIs and performance benchmarking.
 
 The project provides a foundation for further research into DeFi monitoring and suspicious transaction activity.
+
+### Performance Profiling
+
+TraceGuard was benchmarked using Criterion and profiled using Samply.
+
+The `rolling_detector_5000` benchmark recorded approximately 1.77 ms per iteration in the latest run.
+
+A focused profiling session identified 579 samples containing `detect_activity_bursts_rolling`, across 58 unique stack paths. The profile was converted into an SVG flamegraph using Inferno.
+
+The flamegraph provides a visual representation of the detector's execution call stacks and their sampled frequency.
