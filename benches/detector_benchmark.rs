@@ -1,9 +1,6 @@
-
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use criterion::{Criterion, black_box, criterion_group, criterion_main};
 use traceguard::detector::{
-    detect_activity_bursts,
-    detect_activity_bursts_rolling,
-    detect_large_swaps,
+    detect_activity_bursts, detect_activity_bursts_rolling, detect_large_swaps,
 };
 use traceguard::models::SwapEvent;
 

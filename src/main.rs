@@ -1,16 +1,10 @@
-
 mod detector;
 mod errors;
 mod models;
 mod uniswap;
 mod validation;
 
-use axum::{
-    extract::State,
-    routing::get,
-    Json,
-    Router,
-};
+use axum::{Json, Router, extract::State, routing::get};
 use models::MonitoringResult;
 use std::sync::Arc;
 
@@ -18,9 +12,7 @@ async fn health() -> &'static str {
     "TraceGuard is running!"
 }
 
-async fn alerts(
-    State(result): State<Arc<MonitoringResult>>,
-) -> Json<MonitoringResult> {
+async fn alerts(State(result): State<Arc<MonitoringResult>>) -> Json<MonitoringResult> {
     Json((*result).clone())
 }
 
@@ -51,7 +43,5 @@ async fn main() {
 
     println!("TraceGuard API running at http://127.0.0.1:3000");
 
-    axum::serve(listener, app)
-        .await
-        .expect("API server failed");
+    axum::serve(listener, app).await.expect("API server failed");
 }

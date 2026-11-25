@@ -1,10 +1,10 @@
 use crate::detector::detect_activity_bursts;
 use crate::detector::detect_activity_bursts_rolling;
 use crate::detector::detect_large_swaps;
+use crate::models::MonitoringResult;
 use crate::validation::validate_swap;
 use serde::Deserialize;
 use std::error::Error;
-use crate::models::MonitoringResult;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 const ENDPOINT: &str =
@@ -77,7 +77,6 @@ pub async fn fetch_recent_swaps() -> Result<MonitoringResult, Box<dyn Error>> {
 
     let body = response.error_for_status()?.text().await?;
 
-
     let result: GraphResponse = serde_json::from_str(&body)?;
 
     if let Some(errors) = result.errors {
@@ -106,62 +105,52 @@ pub async fn fetch_recent_swaps() -> Result<MonitoringResult, Box<dyn Error>> {
         match validate_swap(&event) {
             Ok(()) => {
                 swap_events.push(event);
-                
             }
             Err(error) => {
                 eprintln!("Skipping invalid swap: {error}");
             }
         }
     }
-    
-let large_swap_alerts = detect_large_swaps(&swap_events);
 
-let activity_alerts = detect_activity_bursts(&swap_events);
+    let large_swap_alerts = detect_large_swaps(&swap_events);
 
-println!("\n========== BASELINE: 5 WINDOWS ==========");
-let rolling_5_alerts =
-    detect_activity_bursts_rolling(&swap_events, 5);
+    let activity_alerts = detect_activity_bursts(&swap_events);
 
-println!("\n========== BASELINE: 10 WINDOWS ==========");
-let rolling_10_alerts =
-    detect_activity_bursts_rolling(&swap_events, 10);
+    println!("\n========== BASELINE: 5 WINDOWS ==========");
+    let rolling_5_alerts = detect_activity_bursts_rolling(&swap_events, 5);
 
-println!("\n========== BASELINE: 20 WINDOWS ==========");
-let rolling_20_alerts =
-    detect_activity_bursts_rolling(&swap_events, 20);
+    println!("\n========== BASELINE: 10 WINDOWS ==========");
+    let rolling_10_alerts = detect_activity_bursts_rolling(&swap_events, 10);
 
-let mut all_alerts = Vec::new();
+    println!("\n========== BASELINE: 20 WINDOWS ==========");
+    let rolling_20_alerts = detect_activity_bursts_rolling(&swap_events, 20);
 
-all_alerts.extend(large_swap_alerts);
-all_alerts.extend(activity_alerts);
-all_alerts.extend(rolling_5_alerts);
-all_alerts.extend(rolling_10_alerts);
-all_alerts.extend(rolling_20_alerts);
+    let mut all_alerts = Vec::new();
 
-println!("\nTotal alerts generated: {}", all_alerts.len());
+    all_alerts.extend(large_swap_alerts);
+    all_alerts.extend(activity_alerts);
+    all_alerts.extend(rolling_5_alerts);
+    all_alerts.extend(rolling_10_alerts);
+    all_alerts.extend(rolling_20_alerts);
 
-println!(
-    "Successfully validated {} swap events.",
-    swap_events.len()
-);
+    println!("\nTotal alerts generated: {}", all_alerts.len());
 
-// Save validated swaps for reproducible experiments.
-std::fs::create_dir_all("data")?;
+    println!("Successfully validated {} swap events.", swap_events.len());
 
-let snapshot = serde_json::to_string_pretty(&swap_events)?;
+    // Save validated swaps for reproducible experiments.
+    std::fs::create_dir_all("data")?;
 
-std::fs::write("data/swaps_snapshot.json", snapshot)?;
+    let snapshot = serde_json::to_string_pretty(&swap_events)?;
 
-println!("Dataset snapshot saved to data/swaps_snapshot.json");
+    std::fs::write("data/swaps_snapshot.json", snapshot)?;
 
-let last_updated = SystemTime::now()
-    .duration_since(UNIX_EPOCH)?
-    .as_secs();
+    println!("Dataset snapshot saved to data/swaps_snapshot.json");
 
-Ok(MonitoringResult {
-    swaps_checked: swap_events.len(),
-    alerts: all_alerts,
-    last_updated,
-})
+    let last_updated = SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs();
 
+    Ok(MonitoringResult {
+        swaps_checked: swap_events.len(),
+        alerts: all_alerts,
+        last_updated,
+    })
 }

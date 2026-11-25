@@ -6,7 +6,7 @@ fn median(values: &mut [f64]) -> f64 {
 
     let middle = values.len() / 2;
 
-    if values.len() % 2 == 0 {
+    if values.len().is_multiple_of(2) {
         (values[middle - 1] + values[middle]) / 2.0
     } else {
         values[middle]
@@ -23,8 +23,7 @@ pub fn detect_large_swaps(swaps: &[SwapEvent]) -> Vec<Alert> {
         return alerts;
     }
 
-    let mut amounts: Vec<f64> =
-        swaps.iter().map(|swap| swap.amount_usd).collect();
+    let mut amounts: Vec<f64> = swaps.iter().map(|swap| swap.amount_usd).collect();
 
     let baseline = median(&mut amounts);
 
@@ -50,9 +49,7 @@ pub fn detect_large_swaps(swaps: &[SwapEvent]) -> Vec<Alert> {
         if swap.amount_usd > threshold {
             println!(
                 "UNUSUAL SWAP | Volume: ${:.2} | Timestamp: {} | Tx: {}",
-                swap.amount_usd,
-                swap.timestamp,
-                swap.transaction_hash
+                swap.amount_usd, swap.timestamp, swap.transaction_hash
             );
 
             alerts.push(Alert {
@@ -73,7 +70,6 @@ pub fn detect_large_swaps(swaps: &[SwapEvent]) -> Vec<Alert> {
 
     alerts
 }
-
 
 // 2. Detect bursts using the overall activity baseline.
 pub fn detect_activity_bursts(swaps: &[SwapEvent]) -> Vec<Alert> {
@@ -96,7 +92,10 @@ pub fn detect_activity_bursts(swaps: &[SwapEvent]) -> Vec<Alert> {
     }
 
     if windows.len() < 5 {
-        println!("Not enough five-minute windows for burst analysis: {}", windows.len());
+        println!(
+            "Not enough five-minute windows for burst analysis: {}",
+            windows.len()
+        );
         return alerts;
     }
 
@@ -181,12 +180,8 @@ pub fn detect_activity_bursts(swaps: &[SwapEvent]) -> Vec<Alert> {
     alerts
 }
 
-
 // 3. Detect bursts using only preceding windows as the baseline.
-pub fn detect_activity_bursts_rolling(
-    swaps: &[SwapEvent],
-    baseline_windows: usize,
-) -> Vec<Alert> {
+pub fn detect_activity_bursts_rolling(swaps: &[SwapEvent], baseline_windows: usize) -> Vec<Alert> {
     const WINDOW_SECONDS: u64 = 5 * 60;
 
     let mut alerts = Vec::new();
@@ -239,11 +234,9 @@ pub fn detect_activity_bursts_rolling(
     for index in baseline_windows..timeline.len() {
         let history = &timeline[index - baseline_windows..index];
 
-        let mut past_volumes: Vec<f64> =
-            history.iter().map(|entry| entry.1).collect();
+        let mut past_volumes: Vec<f64> = history.iter().map(|entry| entry.1).collect();
 
-        let mut past_counts: Vec<f64> =
-            history.iter().map(|entry| entry.2 as f64).collect();
+        let mut past_counts: Vec<f64> = history.iter().map(|entry| entry.2 as f64).collect();
 
         let volume_median = median(&mut past_volumes);
         let count_median = median(&mut past_counts);
@@ -327,10 +320,7 @@ pub fn detect_activity_bursts_rolling(
 #[cfg(test)]
 mod tests {
     use super::{
-        detect_activity_bursts,
-        detect_activity_bursts_rolling,
-        detect_large_swaps,
-        median,
+        detect_activity_bursts, detect_activity_bursts_rolling, detect_large_swaps, median,
     };
     use crate::models::SwapEvent;
 
@@ -396,11 +386,7 @@ mod tests {
         // Five normal five-minute windows.
         for window in 0..5 {
             for i in 0..2 {
-                swaps.push(make_swap(
-                    window * 300 + 10,
-                    100.0,
-                    i as usize,
-                ));
+                swaps.push(make_swap(window * 300 + 10, 100.0, i as usize));
             }
         }
 
@@ -411,13 +397,17 @@ mod tests {
 
         let alerts = detect_activity_bursts(&swaps);
 
-        assert!(alerts.iter().any(|alert| {
-            alert.alert_type == "Activity Burst - Swap Count"
-        }));
+        assert!(
+            alerts
+                .iter()
+                .any(|alert| { alert.alert_type == "Activity Burst - Swap Count" })
+        );
 
-        assert!(alerts.iter().any(|alert| {
-            alert.alert_type == "Activity Burst - Volume"
-        }));
+        assert!(
+            alerts
+                .iter()
+                .any(|alert| { alert.alert_type == "Activity Burst - Volume" })
+        );
     }
 
     #[test]
@@ -427,11 +417,7 @@ mod tests {
         // Five normal windows establish the baseline.
         for window in 0..5 {
             for i in 0..2 {
-                swaps.push(make_swap(
-                    window * 300 + 10,
-                    100.0,
-                    i as usize,
-                ));
+                swaps.push(make_swap(window * 300 + 10, 100.0, i as usize));
             }
         }
 
@@ -442,13 +428,17 @@ mod tests {
 
         let alerts = detect_activity_bursts_rolling(&swaps, 5);
 
-        assert!(alerts.iter().any(|alert| {
-            alert.alert_type == "Rolling Activity Burst - Swap Count"
-        }));
+        assert!(
+            alerts
+                .iter()
+                .any(|alert| { alert.alert_type == "Rolling Activity Burst - Swap Count" })
+        );
 
-        assert!(alerts.iter().any(|alert| {
-            alert.alert_type == "Rolling Activity Burst - Volume"
-        }));
+        assert!(
+            alerts
+                .iter()
+                .any(|alert| { alert.alert_type == "Rolling Activity Burst - Volume" })
+        );
     }
 
     #[test]
